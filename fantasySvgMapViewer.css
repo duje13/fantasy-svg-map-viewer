@@ -1,0 +1,59 @@
+/* ======================= */
+/*     TOOLBOX STYLE       */
+/* ======================= */
+
+#map-toolbox {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+  padding-left: 8px;
+}
+
+.map-toolbox-item{
+  padding-right: 8px;
+  padding-left: 8px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.map-toolbox-item:hover {
+  color: gray;
+}
+
+/* ======================= */
+/*        MENU STYLE       */
+/* ======================= */
+
+#map-menu {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #1a1a1a;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.map-menu-content {
+  padding: 10px;
+  padding-top: 60px;
+  color: white;
+}
+
+#map-menu-clsbtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+#map-menu-clsbtn:hover {
+  color: gray;
+}

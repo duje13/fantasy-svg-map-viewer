@@ -3,9 +3,11 @@ class FantasySvgMapViewer {
     //=========================================================
     //==================== CONSTRUCTOR ========================
     //=========================================================
-    constructor(cssSelector) {
+    constructor(cssSelector, svgElement) {
 
-      this.mapSelector = cssSelector;
+      this._setMapcontainer(cssSelector); //this.mapSelector
+      this._createMap(svgElement); //this.map
+      this._setZoom(); //this._zoom
       
       //==================== UI ========================
 
@@ -141,5 +143,42 @@ class FantasySvgMapViewer {
           .attr("id", "map-menu-content-options")
           .text("Options")
     }
+
+    //=========================================================
+    //============= MAP FUNCTIONS =============================
+    //=========================================================
+
+    /**
+     * Set attributes of given DOM element and sets this.mapSelector
+     * 
+     * @param {string} cssSelector element where map will be appended
+     */
+    _setMapcontainer(cssSelector) {
+      this.mapSelector = cssSelector;
+      d3.select(this.mapSelector).style("position", "relative");
+    }
     
+    /**
+     * Append map in DOM
+     * 
+     * @param {object} svgElement map
+     */
+    _createMap(svgElement) {
+      d3.select(this.mapSelector).node().append(svgElement)
+      this.map = d3.select(this.mapSelector).select("svg");
+      this.map.attr("width", "100%");
+      this.map.attr("height","100%");
+    }
+
+    /**
+     * Enable zoom and pan to map
+     */
+    _setZoom() {
+      this._zoom = d3.zoom().on("zoom", () => {
+        var transform = d3.event.transform;
+        this.map.selectAll(".inclusive,.exclusive").attr("transform", transform)
+      });
+
+      this.map.call(this._zoom);
+    }
 }

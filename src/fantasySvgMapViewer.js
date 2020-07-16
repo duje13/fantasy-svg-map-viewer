@@ -191,6 +191,11 @@ class FantasySvgMapViewer {
     this.map.call(this._zoom);
   }
 
+  /**
+   * 
+   * @param {object} bbox bounding box of object to zoom to
+   * @param {int} duration duration of zooming animation in miliseconds, deafualt=750 
+   */
   moveTo(bbox, duration = 750) {
     var x0 = bbox.x;
     var y0 = bbox.y;
@@ -207,6 +212,9 @@ class FantasySvgMapViewer {
     );
   }
 
+  /**
+   * Calculate bounding box of whole map
+   */
   _calculateMapBBox() {
     var bbox = {};
     bbox.width = -1;
